@@ -1,28 +1,33 @@
-import React from 'react';
+ import React from 'react';
 
-class Users extends React.Component {
-  constructor(props) {
+class Search extends React.Component {
+  constructor(props){
     super(props);
-
-    this.state = {
-      data: null,
+    this.state={
+      search:"",
     };
   }
-
-  componentDidMount() {
-    fetch('https://api.github.com/users/nerissaj')
-      .then(response => response.json())
-      .then(data => this.setState({ data }));
+  handleChange = event => {
+    this.setState({[event.target.name]: event.target.value});
   }
-
+  handleSubmit = event =>{
+    event.preventDefault();
+    this.props.changeUserName(this.state.search);
+    this.setState({search:''});
+  }
   render(){
-      return(
-         <div>
-              {this.state.users.map(user => (
+return(
+  <form onSubmit={this.handleSubmit}>
+    <input type="text" 
+    name="search"
+    placeholder="search"
+    value={this.state.search}
+    onChange={this.handleChange} />
+    <button type="submit">Search for a user</button>
+  </form>
+);
+}
+}
 
-              <div key={user.id}>{user.login}} </div>
-              ))}
-</div>
-  
-export default Users;
+ export default Search;
 

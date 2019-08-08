@@ -1,28 +1,20 @@
 import React from 'react';
 
 function UserCard(props){
-    console.log(props);
-    return(
-        <>
-        {props.users.map(user =>(
-            <div key={users.id} className="users">
-                <img src={avatar_url}
-            </div>
+    return(  
+      <div>
+        <h2>{props.user.login}</h2>
+        <p>{props.user.location}</p>
+        <p>{props.user.url}</p>
+        <div>
+        {props.followers.map(follower => (<div key={follower.id}>{follower.login}</div>
         ))}
-    )
+      </div>
+    </div>
+    );
 }
-    state =
-    users= []
-    
-};
-componentDidMount = () => {
-    fetchUsers().then(json => {
-        this.setState({users: json.features});
-    });
-};
-onFilter(event){
-    searchUsers(event).then(json =>{
-        this.setState({users: json.features});
-    });
-};
+   
+
+
+
 export default UserCard;
