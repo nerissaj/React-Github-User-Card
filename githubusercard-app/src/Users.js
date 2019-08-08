@@ -1,4 +1,5 @@
  import React from 'react';
+ import Button from '@material-ui/core/Button';
 
 class Search extends React.Component {
   constructor(props){
@@ -23,7 +24,7 @@ return(
     placeholder="search"
     value={this.state.search}
     onChange={this.handleChange} />
-    <button type="submit">Search for a user</button>
+    <Button variant="contained" color="primary" type="submit">Search for a user</Button>
   </form>
 );
 }
